@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_113126) do
+ActiveRecord::Schema.define(version: 2022_06_07_113723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "report_id", null: false
+    t.text "comment"
+    t.integer "votes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["report_id"], name: "index_feedbacks_on_report_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
 
   create_table "reports", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -44,5 +55,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_113126) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedbacks", "reports"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "reports", "users"
 end
