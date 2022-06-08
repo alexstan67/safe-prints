@@ -1,0 +1,44 @@
+.btn {
+  width: 120px;
+  height: 35px;
+  border-radius: 50px;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #03989E;
+  text-decoration: none;
+  padding: 8px 30px;
+}
+
+.btn-secondary {
+  color: #03989E;
+  border: 1px solid #03989E;
+  text-decoration: none;
+  padding: 8px 35px;
+}
+
+.btn-circle {
+  display: flex;
+  background-color: #03989E;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.plus {
+  color: white;
+  font-size: 30px;
+}
+
+
+
+.search-bar {
+  background: #FFFFFF;
+  border: 2px solid #03989E;
+  border-radius: 50px;
+}
