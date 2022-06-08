@@ -3,6 +3,6 @@ class Report < ApplicationRecord
   belongs_to :user
   has_many :feedbacks
   validates :risk_level, :description, :report_date_time, presence: true
-  validates :latitude, :longitude, :address, presence: true
+  validates :latitude, :longitude, presence: true
   validates :category, inclusion: { in: CATEGORIES }
 end
