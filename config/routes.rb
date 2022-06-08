@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # root to: "pages#home"
   root to: "pages#home"
   get 'components', to: 'pages#components'
+  get 'navbar', to: 'pages#navbar'
 
   resources :reports, only: [:new, :create, :show] do
     resources :feedbacks, only: [:index, :create]
