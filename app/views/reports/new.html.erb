@@ -1,11 +1,14 @@
 <h1>Report an Incident</h1>
-<div class="form-family"></div>
+<%# <div class="form-family"> %>
   <%= simple_form_for(@report) do |f| %>
-    <%= f.input :category, collection: Report::CATEGORIES, class: "form-bar" %>
-    <%= f.input :risk_level %>
-    <%= f.input :description %>
-    <%= f.input :report_date_time  %>
-    <%= f.input :address, class: "form-bar" %>
-    <%= f.submit %>
+    <%= f.input :category, label: "Incident Category", collection: Report::CATEGORIES, input_html: { class: "combo-box form-bar" }%>
+    <%= f.input :risk_level, label: "Incident Risk", input_html: { class: "combo-box form-bar" } %>
+    <%= f.input :report_date_time, label: "Date and Time", input_html: { class: "combo-box form-bar" }  %>
+    <%= f.input :address, label: "Location of Incident", input_html: { class: "combo-box form-bar" } %>
+    <%= f.input :description, label: "Incident Description", input_html: { class: "combo-box form-bar" } %>
+    <%= f.button :submit, "Submit", class: "btn-form btn-primary" %>
+    <%# <%= link_to report_path do %>
+      <a href="#" class="btn-form btn-secondary">Cancel</a>
+    <%# <% end %>
   <% end %>
-</div>
+<%# </div> %>
