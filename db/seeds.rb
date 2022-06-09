@@ -58,7 +58,7 @@ real_users << user.id
 random_users = []
 i = 0
 10.times do
-  puts "Create random user #{i + 1}..." 
+  puts "Create random user #{i + 1}..."
   user = User.new
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name

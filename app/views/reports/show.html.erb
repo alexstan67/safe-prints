@@ -1,0 +1,36 @@
+<div class="report-container">
+  <div class="user-report">
+    <div class="report-avatar">
+      <%#= cl_image_tag @report.user.photo.key, width: 56, height: 56, class: "avatar-large" %>
+    <%= @report.user.country %>
+    </div>
+    <div class="report-des">
+      <p><%= @report.user.first_name %> <%= @report.user.last_name %></p>
+      <p><strong><%= @report.category.capitalize %></strong></p>
+      <p> <%= @report.report_date_time.strftime("%a %b %e %Y %T") %> </p>
+    </div>
+    <div class="report-marker">
+      <%# waiting for marker %>
+    </div>
+  </div>
+  <div class="incident-container">
+    <div class="incident-des">
+      <p>Incident description</p>
+      <p><%= @report.description %></p>
+    </div>
+    <div class="incident-images">
+      <p>Pictures</p>
+      <%# waiting for images %>
+    </div>
+    <div class="incident-comment">
+      <p>Comment</p>
+      <p><%= @report.feedbacks.first.comment %></p>
+    </div>
+    <div class="commment-input">
+    <form action="" method="post">
+      <input type="text" placeholder="Write a comment" />
+      <input type="button" value="Submit" />
+    </form>
+    </div>
+  </div>
+</div>
