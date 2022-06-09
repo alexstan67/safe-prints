@@ -1,0 +1,25 @@
+body {
+  margin: 0px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px;
+  background-color: rgba(218, 223, 247, 0.5);
+  align-items: center;
+  padding: 5px 18px;
+}
+
+.logo {
+  img {
+    width: 157px;
+    height: 39px;
+  }
+}
+
+.fa-bars:before {
+  content: "\f0c9";
+  color: #03989E;
+  font-size: x-large;
+}
