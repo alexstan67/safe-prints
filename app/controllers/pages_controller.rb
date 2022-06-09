@@ -10,8 +10,8 @@ class PagesController < ApplicationController
 
     @markers = @reports.geocoded.map do |report|  # acts as a filter. If no geolocation, no display.
     {
-      lat: report.longitude,
-      lon: report.latitude
+      lat: report.latitude,
+      lon: report.longitude
     }
     end
   end
