@@ -1,3 +1,18 @@
 // Place all the styles related to the reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.report-container {
+  margin: 5px 18px;;
+  margin-top: 56px;
+}
+
+.user-report {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+
+  p {
+    margin: 0px;
+  }
+}
