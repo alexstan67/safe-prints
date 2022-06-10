@@ -90,7 +90,7 @@ LOCAL_ADDRESS.each do |address|
   report = Report.new
   report.user_id = real_users[i % 3]
   report.category = CATEGORIES.sample
-  report.risk_level = [0,1].sample
+  report.risk_level = rand(3)
   report.description = "This place is dangerous, run away!"
   report.report_date_time = Time.now
   report.address = address
@@ -112,7 +112,7 @@ random_users.each do |user|
   report = Report.new
   report.user_id = user
   report.category = CATEGORIES.sample
-  report.risk_level = [0,1].sample
+  report.risk_level = rand(3)
   report.description = "This place is dangerous, run away!"
   report.report_date_time = Time.now
   report.address = Faker::Address.full_address
