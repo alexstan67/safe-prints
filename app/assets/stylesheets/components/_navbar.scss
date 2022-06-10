@@ -2,7 +2,7 @@ body {
   margin: 0px;
 }
 
-.navbar {
+.navbar2 {
   display: flex;
   justify-content: space-between;
   margin: 0px;
@@ -13,6 +13,7 @@ body {
   top: 1px;
   z-index: 1;
   min-width: -webkit-fill-available;
+  width: 100vw;
 }
 
 .logo {

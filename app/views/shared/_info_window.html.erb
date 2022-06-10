@@ -1,0 +1,6 @@
+<div>
+  <h2><%= report.category.capitalize %></h2>
+  <p><%= risk_text %></p>
+  <p><%= report.report_date_time.strftime("%d %b %Y at %Hh%M") %></p>
+  <%= link_to 'Details', report_path(report.id), class: "btn btn-secondary" %> 
+</div>
