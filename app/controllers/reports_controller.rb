@@ -21,9 +21,9 @@ class ReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
   end
-  
+
   private
-  
+
   def report_params
     params.require(:report).permit(:category, :risk_level, :description, :report_date_time, :address)
   end
