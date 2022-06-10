@@ -68,7 +68,7 @@
 }
 
 .frame {
-  padding: 50px;
+  padding: 0px;
 }
 
 // image containers
@@ -122,4 +122,8 @@ border-radius: 25px;
   position: relative;
   right: 20px;
   top: 11px;
+}
+
+.description-box {
+  height: 50px;
 }
