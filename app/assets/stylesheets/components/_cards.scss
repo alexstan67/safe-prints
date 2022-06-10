@@ -1,0 +1,56 @@
+.search-bar {
+  background-color: #FFFFFF;
+  border: 2px solid #03989E;
+  border-radius: 50px;
+}
+
+
+// first class of the bar that needs drop down
+
+.form-bar {
+  background-color: #FFFFFF;
+  border: 1px solid #03989E !important;
+  border-radius: 50px !important;
+}
+
+// first class of .text-area-comment
+// first class of .text-area-description
+.text-area-comment {
+  background-color: #FFFFFF;
+  border: 1px solid #03989E;
+  border-radius: 25px;
+}
+
+// second class of .text-area-comment
+.comment {
+  width: 380px;
+  height: 135px;
+
+}
+
+// second class of .text-area-description
+.description {
+  width: 380px;
+  height: 282px;
+
+}
+
+// to input comment
+.comment-section {
+  background-color: #FFFFFF;
+  border: 1px solid #03989E;
+  border-radius: 25px;
+  width: 190px;
+  height: 108px;
+}
+
+// the little arrown on the comment section
+.send-btn {
+  border: 1px solid #03989E;
+}
+
+// second class of the .form bar
+.combo-box {
+  width: 380px;
+  height: 50px;
+}
