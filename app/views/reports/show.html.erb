@@ -37,10 +37,11 @@
     </div>
     <div class="incident-comment">
       <p>Comment</p>
-
+      <%  unless @report.feedbacks.empty? %>
       <textarea class="text-area-comment comment" rows="4" cols="50">
         <%= @report.feedbacks.first.comment %>
       </textarea>
+      <% end %>
     </div>
 
     <hr id="hr">
