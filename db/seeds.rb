@@ -27,8 +27,8 @@ user.last_name = "Santoso"
 user.email = "rizza.santoso@gmail.com"
 user.password = "12345678"
 user.country = "🇮🇩"
-# file = File.open(Rails.root.join("app/assets/images/riza.png"))
-# user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+file = File.open(Rails.root.join("app/assets/images/riza.png"))
+user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save
 real_users << user.id
 
@@ -39,8 +39,8 @@ user.last_name = "Stan"
 user.email = "alex.stan@gmail.com"
 user.password = "12345678"
 user.country = "🇫🇷"
-# file = File.open(Rails.root.join("app/assets/images/alex.jpg"))
-# user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+file = File.open(Rails.root.join("app/assets/images/alex.jpg"))
+user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save
 real_users << user.id
 
@@ -52,8 +52,8 @@ user.last_name = "Smith"
 user.email = "glen.smith@gmail.com"
 user.password = "12345678"
 user.country = "🇬🇧"
-# file = File.open(Rails.root.join("app/assets/images/glen.jpg"))
-# user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+file = File.open(Rails.root.join("app/assets/images/glen.jpg"))
+user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save
 real_users << user.id
 
