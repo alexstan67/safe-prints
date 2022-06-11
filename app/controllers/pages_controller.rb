@@ -15,10 +15,11 @@ class PagesController < ApplicationController
       else
         risk_text = "High Risk"
       end
+      report_user = User.find(report.user_id)
     {
       lat: report.latitude,
       lon: report.longitude,
-      info_window: render_to_string(partial: "shared/info_window", locals: { report: report, risk_text: risk_text })
+      info_window: render_to_string(partial: "shared/info_window", locals: { report: report, risk_text: risk_text, report_user: report_user })
     }
     end
   end
