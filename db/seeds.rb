@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require 'open-uri'
 
 ######################################################
 ### DB CLEAINING
@@ -63,6 +64,7 @@ real_users << user.id
 
 # Create random users
 random_users = []
+user_image = ["https://kitt.lewagon.com/placeholder/users/arthur-littm", "https://kitt.lewagon.com/placeholder/users/sarahlafer", "https://kitt.lewagon.com/placeholder/users/krokrob"].freeze
 i = 0
 NBR_USERS.times do
   puts "Create random user #{i + 1}/#{NBR_USERS}..."
@@ -73,6 +75,7 @@ NBR_USERS.times do
   user.password = "12345678"
   user.country = Faker::Nation.flag
   # file = File.open(Rails.root.join(Faker::Avatar.image(slug: "my-own-slug", size: "50x50")))
+  # file = URI.open(user_image.sample)
   # user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   user.save
   random_users << user.id
