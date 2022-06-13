@@ -30,6 +30,7 @@
       </div>
     </div>
     <div class="incident-comment">
+<<<<<<< HEAD
       <h1>Comment</h1>
       <%  unless @report.feedbacks.empty? %>
       <div class="comment">
@@ -37,6 +38,13 @@
       </div>
       <% end %>
       <%= link_to "View all comments...", report_feedbacks_path(@report), { :class=>'view-link' }  %>
+=======
+      <p>Comment</p>
+
+      <textarea class="text-area-comment comment" rows="4" cols="50">
+        <%= @report.feedbacks.first.comment %>
+      </textarea>
+>>>>>>> 34001cebcf2dd2758412af960c41372e84156ddc
     </div>
 
     <hr id="hr">

@@ -18,6 +18,7 @@
 // first class of .text-area-description
 .text-area-comment {
   background-color: RGBA(218, 223, 247, 0.2);
+  border: 1px solid #03989E;
   border-radius: 25px;
   margin-top: -13px;
   border: 0;
@@ -134,4 +135,68 @@ border-radius: 25px;
   right: 23px;
   bottom: 11px;
   text-decoration: none;
+}
+
+.avatar-bordered {
+  width: 40px;
+  border-radius: 50%;
+
+}
+
+.feedback {
+  width: 200px;
+  height: 100px;
+
+}
+
+.thumbs-up {
+  width: 100px;
+  height: 50px;
+
+}
+
+.feedback-and-like {
+  display: flex;
+  background-color: RGBA(218, 223, 247, 0.2);
+  border: #03989E;
+
+}
+
+.feedback-avatar {
+  align-self: flex-start;
+
+}
+
+
+.incident-body {
+  background-color: RGBA(218, 223, 247, 0.2);
+  border-radius: 15px;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-top: 80px;
+  h2 {
+    color: #03989E;
+  }
+}
+
+.feedback-and-like {
+  background-color: RGBA(218, 223, 247, 0.2);
+  border-radius: 15px;
+  padding: 9px;
+  margin-bottom: 20px;
+  h2{
+    color: #03989E;
+    font-size: 20px;
+  }
+}
+
+.like-button {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.feedback-card-body {
+ width: 100%;
 }
