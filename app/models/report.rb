@@ -8,4 +8,9 @@ class Report < ApplicationRecord
   validates :risk_level, :address, :description, :report_date_time, presence: true
   # validates :latitude, :longitude, presence: true
   validates :category, inclusion: { in: CATEGORIES }
+
+  def old
+    now = Time.new
+    now - report_date_time > 14_400
+  end
 end

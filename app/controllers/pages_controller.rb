@@ -1,10 +1,4 @@
 class PagesController < ApplicationController
-  def components
-  end
-
-  def navbar
-  end
-
   def home
     @reports = Report.all
     @markers = @reports.geocoded.map do |report|  # acts as a filter. If no geolocation, no display.
@@ -16,11 +10,13 @@ class PagesController < ApplicationController
         risk_text = "High Risk"
       end
       report_user = User.find(report.user_id)
-    {
-      lat: report.latitude,
-      lon: report.longitude,
-      info_window: render_to_string(partial: "shared/info_window", locals: { report: report, risk_text: risk_text, report_user: report_user })
-    }
+      {
+        lat: report.latitude,
+        lon: report.longitude,
+        info_window: render_to_string(partial: "shared/info_window", locals: { report: report, risk_text: risk_text, report_user: report_user }),
+        image_url: helpers.asset_url("exclamation-triangle-fill.svg"),
+        old: report.old
+      }
     end
   end
 end
