@@ -1,7 +1,10 @@
 <div class="report-container">
 
-<a href="#"><i class="fa-solid fa-chevron-left"></i></a>
-
+<%# <a href="#"><i class="fas fa-angle-left"></i></a> %>
+<%= link_to report_path(@report), method: :get do %>
+                <i class="fas fa-angle-left">
+              <% end %>
+  <%= link_to "back", report_path(@report) %>
   <div class="incident-body">
       <h2>Incident description</h2>
       <p> <%= @report.description %> </p>
