@@ -28,6 +28,14 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+
+    if ((Time.now - @report.report_date_time)/1.hour).round < 1
+      @measurement = "minute"
+      @reported_time = ((Time.now - @report.report_date_time)/1.minute).round
+    else
+      @measurement = "hour"
+      @reported_time = ((Time.now - @report.report_date_time)/1.hour).round
+    end
   end
 
   private

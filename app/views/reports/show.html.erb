@@ -1,22 +1,16 @@
 <div class="report-container">
   <div class="user-report">
     <div class="report-avatar">
-      <%# <%= cl_image_tag(@report.user.photo.attach, crop: :fill, class: "avatar-extra-large") %> %>
+      <%# <%= cl_image_tag(@report.user.photo.attach, crop: :fill, class: "avatar-extra-large") %>
     <%= @report.user.country %>
     </div>
     <div class="report-des">
       <p><%= @report.user.first_name %> <%= @report.user.last_name %></p>
       <p><strong><%= @report.category.capitalize %></strong></p>
-      <p> <%= @report.report_date_time.strftime("%d %b %Y at %Hh%M") %> </p>
+      <p>Reported <%= pluralize(@reported_time, @measurement) %> ago.</p>
     </div>
-    <div class="report-marker">
-      <% if @report.risk_level == 0  %>
-       <div class="heat-marker hm-yellow"></div>
-      <% elsif @report.risk_level == 1 %>
-       <div class="heat-marker hm-orange"></div>
-      <% else @report.risk_level == 2 %>
-       <div class="heat-marker hm-red"></div>
-      <% end %>
+    <div class="caution-marker">
+      <%= image_tag "exclamation-triangle-fill.svg", { :class=>'caution' } %>
     </div>
   </div>
   <div class="incident-container">
