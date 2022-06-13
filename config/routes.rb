@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :reports, only: [:new, :create, :show] do
     resources :feedbacks, only: [:index, :create]
   end
+  resources :feedbacks, only: [:update]
 end

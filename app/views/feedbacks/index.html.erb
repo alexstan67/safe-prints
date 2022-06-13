@@ -1,0 +1,46 @@
+<div class="report-container">
+
+  <div class="incident-body">
+      <h2>Incident description</h2>
+      <p> <%= @report.description %> </p>
+  </div>
+
+  <h2 class="comment-title">Comments</h2>
+
+  <% @feedbacks.each do |feedback| %>
+  <div class="feedback-and-like">
+    <div class="feedback-card-body">
+        <div class="feedback-avatar">
+
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
+          <h2> <%= feedback.user.first_name %> </h2>
+          <p> <%= feedback.comment %> </p>
+          </div>
+            <div class="like-button">
+              <%= feedback.votes %>
+              <%= link_to feedback_path(feedback), method: :patch do %>
+                <i class="far fa-thumbs-up"></i>
+              <% end %>
+            </div>
+        </div>
+    </div>
+  </div>
+  <% end %>
+
+    <hr id="hr">
+
+    <div class="commment-input">
+          <form action="" method="post" id="comment-form">
+            <input class="comment-section" type="text" placeholder="Write a comment" />
+            <%= button_tag( :class => "send-btn") do %>
+              <i class="fas fa-arrow-circle-up"></i>
+            <% end %>
+        </form>
+        </div>
+</div>
+
+
+    <%# t.bigint "user_id", null: false
+    t.bigint "report_id", null: false
+    t.text "comment"
+    t.integer "votes" %>
