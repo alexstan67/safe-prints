@@ -2,13 +2,18 @@ body {
   margin: 0px;
 }
 
-.navbar {
+.navbar2 {
   display: flex;
   justify-content: space-between;
   margin: 0px;
-  background-color: rgba(218, 223, 247, 0.5);
+  background-color: rgba(218, 223, 247, 0.5%);
   align-items: center;
   padding: 5px 18px;
+  position: fixed;
+  top: 1px;
+  z-index: 1;
+  min-width: -webkit-fill-available;
+  width: 100vw;
 }
 
 .logo {

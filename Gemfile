@@ -60,3 +60,6 @@ gem 'devise'
 gem 'faker'
 gem 'geocoder'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'simple_form'
+gem 'font-awesome-sass'
+gem 'cloudinary', '~> 1.16.0'
