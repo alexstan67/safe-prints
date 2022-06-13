@@ -6,3 +6,16 @@
   width: 100vw;
   text-align: -moz-center;
 }
+
+.mapboxgl-ctrl {
+  margin: 0px !important;
+}
+
+.mapboxgl-ctrl-geocoder {
+  top: 75px;
+  max-width: none;
+  width: 100%;
+  border: 1px solid #03989E;
+  box-shadow: none;
+  margin-left:5px;
+}
