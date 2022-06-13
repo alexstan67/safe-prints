@@ -1,7 +1,7 @@
 <div class="report-container">
   <div class="user-report">
     <div class="report-avatar">
-      <%#= cl_image_tag @report.user.photo.key, width: 56, height: 56, class: "avatar-large" %>
+      <%# <%= cl_image_tag(@report.user.photo.attach, crop: :fill, class: "avatar-extra-large") %> %>
     <%= @report.user.country %>
     </div>
     <div class="report-des">
@@ -21,14 +21,14 @@
   </div>
   <div class="incident-container">
     <div class="incident-des">
-      <p><label>Incident description</label></p>
 
-      <textarea class="text-area-comment description" rows="4" cols="50">
+      <div class="description">
+      <h1>Incident description</h1>
         <%= @report.description %>
-      </textarea>
+      </div>
     </div>
     <div class="incident-images-container">
-      <p>Pictures</p>
+      <h1>Pictures</h1>
       <%# waiting for images %>
       <div class="incident-images">
         <div class="inc-image"></div>
@@ -36,12 +36,13 @@
       </div>
     </div>
     <div class="incident-comment">
-      <p>Comment</p>
+      <h1>Comment</h1>
       <%  unless @report.feedbacks.empty? %>
-      <textarea class="text-area-comment comment" rows="4" cols="50">
+      <div class="comment">
         <%= @report.feedbacks.first.comment %>
-      </textarea>
+      </div>
       <% end %>
+      <%= link_to "View all comments...", report_feedbacks_path(@report), { :class=>'view-link' }  %>
     </div>
 
     <hr id="hr">
@@ -52,7 +53,7 @@
         <%= button_tag( :class => "send-btn") do %>
           <i class="fas fa-arrow-circle-up"></i>
         <% end %>
-    </form>
+      </form>
     </div>
   </div>
 </div>
