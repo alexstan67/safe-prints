@@ -28,3 +28,23 @@ body {
   color: #03989E;
   font-size: x-large;
 }
+
+.navbar-down {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  //background-color: #03989E;
+  background-color: #03989E;
+  margin: 0px;
+  position: fixed;
+  bottom: 50px;
+  z-index: 1;
+  width: 100vw;
+  padding: 5px;
+}
+
+.navbar-down-button {
+  width: 40px;
+  justify-content: space-between;
+}
