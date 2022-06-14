@@ -1,4 +1,4 @@
-<div class="report-container">
+<div class="report-container-new">
   <h1>Report an Incident</h1>
   <div class="frame">
     <%= simple_form_for(@report) do |f| %>
@@ -7,6 +7,7 @@
       <%= f.input :report_date_time, label: "Date and Time", placeholder: :false, input_html: { class: "combo-box form-bar" }  %>
       <%= f.input :address, label: "Location of Incident", placeholder: "Canggu, Bali", input_html: { class: "combo-box form-bar" } %>
       <%= f.input :description, label: "Incident Description", input_html: { class: "combo-box form-bar" } %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, "Submit", class: "btn-form btn-primary", style: "vertical-align: initial !important;" %>
       <%# <%= link_to report_path do %>
         <a href="#" type="submit"class="btn-form btn-secondary">Cancel</a>
