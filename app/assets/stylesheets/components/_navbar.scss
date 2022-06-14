@@ -33,13 +33,12 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  //background-color: #03989E;
+  justify-content: space-around;
   background-color: #03989E;
   margin: 0px;
   position: fixed;
-  bottom: 50px;
-  z-index: 1;
+  bottom: 0px;
+  z-index: 2;
   width: 100vw;
   padding: 5px;
 }
