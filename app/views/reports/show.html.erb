@@ -1,12 +1,18 @@
 <div class="report-container">
   <div class="user-report">
     <div class="report-avatar">
-      <%# <%= cl_image_tag(@report.user.photo.attach, crop: :fill, class: "avatar-extra-large") %>
-    <%= @report.user.country %>
+      <% if @report.user.photo.key == nil %>
+        <%= image_tag "user_icon.png" %>
+      <% else %>
+        <%= cl_image_tag @report.user.photo.key, height: 80, width: 80, crop: :fill, class: 'user-avatar' %>
+      <% end%>
+      <div class="country">
+        <%= @report.user.country %>
+      </div>
     </div>
     <div class="report-des">
+      <p class="category"><%= @report.category.capitalize %></p>
       <p><%= @report.user.first_name %> <%= @report.user.last_name %></p>
-      <p><strong><%= @report.category.capitalize %></strong></p>
       <p>Reported <%= pluralize(@reported_time, @measurement) %> ago.</p>
     </div>
     <div class="caution-marker">
@@ -30,21 +36,13 @@
       </div>
     </div>
     <div class="incident-comment">
-<<<<<<< HEAD
       <h1>Comment</h1>
       <%  unless @report.feedbacks.empty? %>
       <div class="comment">
-        <%= @report.feedbacks.first.comment %>
+        <%= @report.feedbacks.first.comment %>;
       </div>
       <% end %>
       <%= link_to "View all comments...", report_feedbacks_path(@report), { :class=>'view-link' }  %>
-=======
-      <p>Comment</p>
-      <%# unless @report.feedbacks.empty? %>
-      <textarea class="text-area-comment comment" rows="4" cols="50">
-        <%= @report.feedbacks.first.comment %>
-      </textarea>
->>>>>>> 34001cebcf2dd2758412af960c41372e84156ddc
     </div>
 
     <hr id="hr">
