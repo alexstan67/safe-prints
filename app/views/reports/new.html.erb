@@ -3,11 +3,17 @@
   <div class="frame">
     <%= simple_form_for(@report) do |f| %>
       <%= f.input :category, label: "Incident Category", collection: Report::CATEGORIES, input_html: { class: "combo-box form-bar" }%>
-      <%= f.input :risk_level, label: "Incident Risk", collection: ["low-risk", "medium-risk", "high-risk"], input_html: { class: "combo-box form-bar" } %>
       <%= f.input :report_date_time, label: "Date and Time", placeholder: :false, input_html: { class: "combo-box form-bar" }  %>
-      <%= f.input :address, label: "Location of Incident", placeholder: "Canggu, Bali", input_html: { class: "combo-box form-bar" } %>
-      <%= f.input :description, label: "Incident Description", input_html: { class: "combo-box form-bar" } %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.input :address, label: "Location of Incident", input_html: { class: "combo-box form-bar" } %>
+      <%= f.input :description, as: :text, label: "Incident Description", input_html: { class: "combo-box form-bar inc-des" } %>
+      <%= f.input :photos, as: :file, wrapper_html: { class: 'd-none' }, input_html: { multiple: true, class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+      <div class="form-group file optional report_photos" id="upload-photo">
+        <label class="file optional upload-photo" for="report_photos">
+          <%= image_tag "camera_icon.png" %> <span>Upload photos</span>
+        </label>
+        <input class="form-control-file file optional d-none" multiple="multiple" type="file" name="report[photos][]" id="report_photos">
+      </div>
+
       <%= f.button :submit, "Submit", class: "btn-form btn-primary", style: "vertical-align: initial !important;" %>
       <%# <%= link_to report_path do %>
         <a href="#" type="submit"class="btn-form btn-secondary">Cancel</a>

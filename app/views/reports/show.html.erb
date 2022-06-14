@@ -31,8 +31,13 @@
       <h1>Pictures</h1>
       <%# waiting for images %>
       <div class="incident-images">
-        <div class="inc-image"></div>
-        <div class="inc-image"></div>
+        <% if @report.photos.empty? %>
+          <%= image_tag "no-photo.png", class: 'no-photo' %>
+        <% else %>
+          <% @report.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class: 'inc-image' %>
+          <% end %>
+        <% end%>
       </div>
     </div>
     <div class="incident-comment">
@@ -47,7 +52,7 @@
 
     <hr id="hr">
 
-    <div class="commment-input">
+    <div class="comment-input">
       <form action="" method="post" id="comment-form">
         <input class="comment-section" type="text" placeholder="Write a comment" />
         <%= button_tag( :class => "send-btn") do %>

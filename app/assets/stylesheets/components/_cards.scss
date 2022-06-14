@@ -79,15 +79,15 @@
 
 // image containers
 .inc-image {
-border: 1px solid #03989E;
 width: 48%;
 height: 108px;
 border-radius: 25px;
+margin: 4px;
 }
 
 .incident-images {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: -13px;
   margin-bottom: 6px;
 }
@@ -124,10 +124,11 @@ border-radius: 25px;
   padding: 15px;
   margin: 15px 0 15px 0;
   position: relative;
+  min-height: 205px;
 }
 
 .incident-images-container h1 {
-  margin: 8px 15px;
+    margin: 8px 15px;
 }
 
 .view-link {
@@ -222,4 +223,14 @@ border-radius: 25px;
 
 .comment-input {
   position: sticky;
+}
+
+.no-photo {
+  width: 100px;
+  margin-top: 10px;
+}
+
+.inc-des {
+  height: 225px;
+  border-radius: 15px !important;
 }

@@ -5,13 +5,13 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
-    if @report.risk_level == "low-risk"
-      @report.risk_level = 0
-    elsif @report.risk_level == "medium-risk"
-      @report.risk_level = 1
-    elsif @report.risk_level == "high-risk"
-      @report.risk_level = 2
-    end
+    # if @report.risk_level == "low-risk"
+    #   @report.risk_level = 0
+    # elsif @report.risk_level == "medium-risk"
+    #   @report.risk_level = 1
+    # elsif @report.risk_level == "high-risk"
+    #   @report.risk_level = 2
+    # end
 
     @report.user = current_user
 
@@ -37,7 +37,7 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:category, :risk_level, :description, :report_date_time, :address)
+    params.require(:report).permit(:category, :risk_level, :description, :report_date_time, :address, photos: [])
   end
 end
 
