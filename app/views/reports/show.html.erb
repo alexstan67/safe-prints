@@ -48,12 +48,13 @@
     <hr id="hr">
 
     <div class="commment-input">
-      <form action="" method="post" id="comment-form">
-        <input class="comment-section" type="text" placeholder="Write a comment" />
+      <%= simple_form_for [@report,@feedback], html: { id: "comment-form" } do |f|  %>
+        <input class="comment-section" placeholder="Write a comment" type="text" name="feedback[comment]" id="feedback_comment">
         <%= button_tag( :class => "send-btn") do %>
           <i class="fas fa-arrow-circle-up"></i>
         <% end %>
-      </form>
+      <% end %>
     </div>
+
   </div>
 </div>
