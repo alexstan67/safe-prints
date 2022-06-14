@@ -15,8 +15,7 @@
   <div class="feedback-and-like">
     <div class="feedback-card-body">
         <div class="feedback-avatar">
-
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
+          <%= cl_image_tag feedback.user.photo.key, class: "avatar-bordered" %>
           <h2> <%= feedback.user.first_name %> </h2>
           <p> <%= feedback.comment %> </p>
         </div>
@@ -32,12 +31,16 @@
 
     <hr id="hr">
 
-    <div class="commment-input">
-      <%= simple_form_for [@report,@feedback] do |f|  %>
-        <%= f.input :comment, label: false, placeholder: "Write a comment", class: "comment-section", input_html: { class: "create-feedback-button" } %>
-      <%= f.submit label: "Submit", class: "create-feedback-btn" %>
+
+      <div class="commment-input">
+      <%= simple_form_for [@report,@feedback], html: { id: "comment-form" } do |f|  %>
+        <input class="comment-section" placeholder="Write a comment" type="text" name="feedback[comment]" id="feedback_comment">
+        <%= button_tag( :class => "send-btn") do %>
+          <i class="fas fa-arrow-circle-up"></i>
+        <% end %>
       <% end %>
     </div>
+
 </div>
 
 <%# <%= f.input :project_title, label: 'Project Title', :label_html => { :class => 'question-project' }, placeholder: 'A catchy, relevant title for your project', :input_html => {:style=> 'width: 650px', class: 'response-project'} %>

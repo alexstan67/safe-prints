@@ -17,7 +17,7 @@ class FeedbacksController < ApplicationController
 
   def update
     @feedback = Feedback.find(params[:id])
-    @feedback.votes+= 1
+    @feedback.votes = @feedback.votes.to_i + 1
     @feedback.save
       redirect_to report_feedbacks_path(@feedback.report_id)
   end
