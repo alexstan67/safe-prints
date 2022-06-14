@@ -1,10 +1,9 @@
 <div class="report-container">
 
-<%# <a href="#"><i class="fas fa-angle-left"></i></a> %>
-<%= link_to report_path(@report), method: :get do %>
-                <i class="fas fa-angle-left">
+  <%= link_to report_path(@report), method: :get do %>
+                <i class="fas fa-angle-left fa-3x" style="color:#03989E !important;"></i>
               <% end %>
-  <%= link_to "back", report_path(@report) %>
+
   <div class="incident-body">
       <h2>Incident description</h2>
       <p> <%= @report.description %> </p>
@@ -24,7 +23,7 @@
             <div class="like-button">
               <%= feedback.votes %>
               <%= link_to feedback_path(feedback), method: :patch do %>
-                <i class="far fa-thumbs-up"></i>
+                <i class="far fa-thumbs-up fa-x" style="color:#03989E !important;"></i>
               <% end %>
             </div>
         </div>
