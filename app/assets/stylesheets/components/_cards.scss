@@ -126,7 +126,7 @@ border-radius: 25px;
 }
 
 .incident-images-container h1 {
-  margin: 15px;
+  margin: 8px 15px;
 }
 
 .view-link {
@@ -199,4 +199,22 @@ border-radius: 25px;
 
 .feedback-card-body {
  width: 100%;
+}
+
+.report-avatar {
+  position: relative;
+  top: 10px;
+}
+
+.country {
+  position: absolute;
+  bottom: 14px;
+  right: 3px;
+  font-size: 25px;
+}
+
+.user-avatar {
+  border-radius: 50px;
+  position: relative;
+  top: -11px;
 }
