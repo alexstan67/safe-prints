@@ -20,8 +20,8 @@ User.destroy_all
 ######################################################
 ### GLOBAL VARIABLES
 ######################################################
-NBR_USERS = 1
-NBR_WORLD_REPORTS = 10
+NBR_USERS = 20
+NBR_WORLD_REPORTS = 100
 MAX_REVIEWS = 5
 
 LOCAL_ADDRESS = ["Canggu, Bali", "Ubud, Bali", "Denpasar, Bali", "Kuta, Bali", "31 Av. de la Bourdonnais, 75007 Paris, France", "20 Rue Jean Rey, 75015 Paris, France", "Pont de Bir-Hakeim, 75015 Paris, France", "12 Av. Rapp, 75007 Paris, France"].freeze
@@ -71,7 +71,8 @@ real_users << user.id
 
 # Create random users
 random_users = []
-user_image = ["https://kitt.lewagon.com/placeholder/users/arthur-littm", "https://kitt.lewagon.com/placeholder/users/sarahlafer", "https://kitt.lewagon.com/placeholder/users/krokrob"].freeze
+# user_image = ["https://kitt.lewagon.com/placeholder/users/arthur-littm", "https://kitt.lewagon.com/placeholder/users/sarahlafer", "https://kitt.lewagon.com/placeholder/users/krokrob"].freeze
+user_image = ["https://kitt.lewagon.com/placeholder/users/sarahlafer"].freeze
 i = 0
 NBR_USERS.times do
   puts "Create random user #{i + 1}/#{NBR_USERS}..."
@@ -93,7 +94,7 @@ end
 ### REPORTS
 ######################################################
 
-# Create our team users reports in a defined area, will be linked to team users for demo purpose
+# Create our local reports in a defined area (Paris and Canggu), will be linked to team users for demo purpose
 reports = []
 i = 0
 LOCAL_ADDRESS.each do |address|
@@ -181,8 +182,6 @@ reports.each do |report|
     feedback.save
   end
 end
-
-#TODO: Add real feedbacks for Canggu
 
 puts "#{User.all.count} users created!"
 puts "#{Report.all.count} reports created!"
