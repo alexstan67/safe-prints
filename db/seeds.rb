@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require 'open-uri'
 
 ######################################################
 ### DB CLEAINING
@@ -17,11 +18,18 @@ Report.destroy_all
 User.destroy_all
 
 ######################################################
+### GLOBAL VARIABLES
+######################################################
+NBR_USERS = 20
+NBR_WORLD_REPORTS = 100
+MAX_REVIEWS = 5
+
+LOCAL_ADDRESS = ["Canggu, Bali", "Ubud, Bali", "Denpasar, Bali", "Kuta, Bali", "31 Av. de la Bourdonnais, 75007 Paris, France", "20 Rue Jean Rey, 75015 Paris, France", "Pont de Bir-Hakeim, 75015 Paris, France", "12 Av. Rapp, 75007 Paris, France"].freeze
+
+######################################################
 ### USERS
 ######################################################
 # Create teams users
-NBR_USERS = 100
-
 real_users = []
 
 puts "Create team user Riza..."
@@ -56,13 +64,15 @@ user.last_name = "Smith"
 user.email = "glen.smith@gmail.com"
 user.password = "12345678"
 user.country = "🇬🇧"
-file = File.open(Rails.root.join("app/assets/images/glen.jpg"))
+file = File.open(Rails.root.join("app/assets/images/glen.png"))
 user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save
 real_users << user.id
 
 # Create random users
 random_users = []
+# user_image = ["https://kitt.lewagon.com/placeholder/users/arthur-littm", "https://kitt.lewagon.com/placeholder/users/sarahlafer", "https://kitt.lewagon.com/placeholder/users/krokrob"].freeze
+user_image = ["https://kitt.lewagon.com/placeholder/users/sarahlafer"].freeze
 i = 0
 NBR_USERS.times do
   puts "Create random user #{i + 1}/#{NBR_USERS}..."
@@ -73,7 +83,8 @@ NBR_USERS.times do
   user.password = "12345678"
   user.country = Faker::Nation.flag
   # file = File.open(Rails.root.join(Faker::Avatar.image(slug: "my-own-slug", size: "50x50")))
-  # user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  file = URI.open(user_image.sample)
+  user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   user.save
   random_users << user.id
   i += 1
@@ -82,10 +93,8 @@ end
 ######################################################
 ### REPORTS
 ######################################################
-CATEGORIES = ["road accident", "mugging", "pickpocket", "sexual harrasment", "scams", "others"]
-LOCAL_ADDRESS = ["Canggu, Bali", "Ubud, Bali", "Denpasar, Bali", "Kuta, Bali", "31 Av. de la Bourdonnais, 75007 Paris, France", "20 Rue Jean Rey, 75015 Paris, France", "Pont de Bir-Hakeim, 75015 Paris, France", "12 Av. Rapp, 75007 Paris, France"].freeze
 
-# Create our team users reports in a defined area, will be linked to team users for demo purpose
+# Create our local reports in a defined area (Paris and Canggu), will be linked to team users for demo purpose
 reports = []
 i = 0
 LOCAL_ADDRESS.each do |address|
@@ -93,10 +102,19 @@ LOCAL_ADDRESS.each do |address|
   i += 1
   puts "Create local area report #{i}..."
   report = Report.new
-  report.user_id = real_users[i % 3]
-  report.category = CATEGORIES.sample
+  report.user_id = random_users[i % NBR_USERS]
+  report.category = Report::CATEGORIES.sample
   report.risk_level = rand(3)
-  report.description = "This place is dangerous, run away!"
+  # Below the 2 reports tht will be pitched (Canggu and Kuta)
+  if address.include?('Canggu')
+    report.description = "I was watching the sunset at Batu Bolong Beach when a balding man carrying a can of beer approached me. The man was very bubbly and had an English accent. Although he seemed quite lovely at first, things quickly got out of hand. I finally managed to push him away and ran from him. Glad I was able to bend his fingers, so if you spot a balding British man with a beard and a broken finger, please be aware."
+    report.category = "sexual harrasment"
+  elsif address.include?('Kuta')
+    report.description = "I was walking along Kuta Street with my purse in hand. Unexpectedly, a bald Caucasian man on a scooter snatched my purse. I was shocked and really disappointed to lose my passport, credit cards, and a few thousand dollars."
+    report.category = "robbery"
+  else
+    report.description = "This place is dangerous, run away!"
+  end
   if recent_report == 0
     # Report < 4 hours
     shift = rand(14400) # secs
@@ -121,13 +139,13 @@ WORLD = { europe_west:    {lat: (46.5..0.0), long: (50.8..30.0)},
           big_china:      {lat: (23.19..50.8), long: (60.9..115.54)}
 }.freeze
 i = 0
-random_users.each do |user|
+NBR_WORLD_REPORTS.times do
   recent_report = rand(2)
   i += 1
-  puts "Create world area report #{i}/#{NBR_USERS}..."
+  puts "Create world area report #{i}/#{NBR_WORLD_REPORTS}..."
   report = Report.new
-  report.user_id = user
-  report.category = CATEGORIES.sample
+  report.user_id = random_users[i % NBR_USERS]
+  report.category = Report::CATEGORIES.sample
   report.risk_level = rand(3)
   report.description = "This place is dangerous, run away!"
   if recent_report == 0
@@ -153,14 +171,16 @@ end
 # Create reviews for the real users reports
 i = 0
 reports.each do |report|
-  i += 1
-  puts "Create review #{i}/#{NBR_USERS}..."
-  feedback = Feedback.new
-  feedback.user_id = real_users.sample
-  feedback.comment = Faker::Lorem.sentence
-  feedback.votes = [0, 1].sample
-  feedback.report_id = report.id
-  feedback.save
+  rand(0..MAX_REVIEWS).times do
+    i += 1
+    puts "Create review #{i}..."
+    feedback = Feedback.new
+    feedback.user_id = random_users.sample
+    feedback.comment = Faker::Lorem.sentence
+    feedback.votes = [0, 1].sample
+    feedback.report_id = report.id
+    feedback.save
+  end
 end
 
 puts "#{User.all.count} users created!"
