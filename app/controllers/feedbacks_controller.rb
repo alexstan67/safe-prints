@@ -1,6 +1,8 @@
 class FeedbacksController < ApplicationController
   def index
     @feedbacks = Feedback.where(report_id: params[:report_id])
+    @report = Report.find(params[:report_id]) # "23"
+
   end
 
   def create
@@ -13,6 +15,13 @@ class FeedbacksController < ApplicationController
     else
       render "feedbacks/index"
     end
+  end
+
+  def update
+    @feedback = Feedback.find(params[:id])
+    @feedback.votes+= 1
+    @feedback.save
+      redirect_to report_feedbacks_path(@feedback.report_id)
   end
 
   private
