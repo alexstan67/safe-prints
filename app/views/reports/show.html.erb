@@ -31,15 +31,20 @@
       <h1>Pictures</h1>
       <%# waiting for images %>
       <div class="incident-images">
-        <div class="inc-image"></div>
-        <div class="inc-image"></div>
+        <% if @report.photos.empty? %>
+          <%= image_tag "no-photo.png", class: 'no-photo' %>
+        <% else %>
+          <% @report.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class: 'inc-image' %>
+          <% end %>
+        <% end%>
       </div>
     </div>
     <div class="incident-comment">
       <h1>Comment</h1>
       <%  unless @report.feedbacks.empty? %>
       <div class="comment">
-        <%= @report.feedbacks.first.comment %>;
+        <%= @report.feedbacks.first.comment %>
       </div>
       <% end %>
       <%= link_to "View all comments...", report_feedbacks_path(@report), { :class=>'view-link' }  %>
