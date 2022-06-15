@@ -72,7 +72,8 @@ real_users << user.id
 # Create random users
 random_users = []
 # user_image = ["https://kitt.lewagon.com/placeholder/users/arthur-littm", "https://kitt.lewagon.com/placeholder/users/sarahlafer", "https://kitt.lewagon.com/placeholder/users/krokrob"].freeze
-user_image = ["https://kitt.lewagon.com/placeholder/users/sarahlafer"].freeze
+# user_image = ["https://kitt.lewagon.com/placeholder/users/sarahlafer"].freeze
+# user_image = [image_tag("girl_1.jpg"), image_tag("girl_2.jpg"), image_tag("girl_3.jpg"), image_tag("girl_4.jpg"), image_tag("girl_5.jpg"), image_tag("girl_6.jpg"), image_tag("girl_7.jpg"), image_tag("girl_8.jpg")].sample
 i = 0
 NBR_USERS.times do
   puts "Create random user #{i + 1}/#{NBR_USERS}..."
@@ -82,8 +83,10 @@ NBR_USERS.times do
   user.email = "#{user.first_name}.#{user.last_name}@gmail.com"
   user.password = "12345678"
   user.country = Faker::Nation.flag
-  # file = File.open(Rails.root.join(Faker::Avatar.image(slug: "my-own-slug", size: "50x50")))
-  file = URI.open(user_image.sample)
+  file = File.open(Rails.root.join("app/assets/images/girl_#{rand(1..7)}.jpg"))
+  #file = File.open(Rails.root.join(Faker::Avatar.image(slug: "my-own-slug", size: "50x50")))
+  # file = File.open(Rails.root.join(image_tag user_image.sample ))
+  # file = URI.open(user_image.sample)
   user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   user.save
   random_users << user.id
