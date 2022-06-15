@@ -18,7 +18,7 @@
 // first class of .text-area-comment
 // first class of .text-area-description
 .text-area-comment {
-  background-color: RGBA(218, 223, 247, 0.2);
+  background-color: rgba(218, 223, 247, 0.2);
   border: 1px solid #03989E;
   border-radius: 25px;
   margin-top: -13px;
@@ -37,7 +37,7 @@
   width: 380px;
   height: 230px;
   border-radius: 0 0 25px 25px;
-  background-color: RGBA(218, 223, 247, 0.2);
+  background-color: rgba(218, 223, 247, 0.2);
   padding: 15px;
   overflow: scroll;
 }
@@ -121,7 +121,7 @@ object-fit: cover;
 }
 
 .incident-comment {
-  background-color: RGBA(218, 223, 247, 0.2);
+  background-color: rgba(218, 223, 247, 0.2);
   border-radius: 25px;
   padding: 15px;
   margin: 15px 0 15px 0;
@@ -161,7 +161,7 @@ object-fit: cover;
 
 .feedback-and-like {
   display: flex;
-  background-color: RGBA(218, 223, 247, 0.2);
+  background-color: rgba(218, 223, 247, 0.2);
   border: #03989E;
 
 }
@@ -173,7 +173,7 @@ object-fit: cover;
 
 
 .incident-body {
-  background-color: #RGBA(218, 223, 247, 0.2);
+  background-color: rgba(218, 223, 247, 0.2);
   border-radius: 15px;
   text-align: justify;
   padding: 15px;
@@ -184,7 +184,7 @@ object-fit: cover;
 }
 
 .feedback-and-like {
-  background-color: #RGBA(218, 223, 247, 0.2);
+  background-color: rgba(218, 223, 247, 0.2);
   border-radius: 15px;
   padding: 9px;
   margin-bottom: 20px;
