@@ -3,19 +3,3 @@
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-<div class="navbar-down">
-  <div class="navbar-down-button">
-    <%= link_to root_path do %>
-      <%= image_tag "home.png" %>
-    <% end %>
-  </div>
-  <div class="create-button">
-    <a href="/reports/new" class="btn-circle"><i class="fas fa-plus plus"></i></a>
-  </div>
-  <div class="navbar-down-button">
-    <%= link_to root_path do %>
-      <%= image_tag "bell.png" %>
-    <% end %>
-  </div>
-</div>
