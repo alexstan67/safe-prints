@@ -1,10 +1,5 @@
 .create-button {
-  margin: 0px;
-  position: fixed;
-  bottom: 50px;
-  z-index: 1;
-  width: 100vw;
-  text-align: -moz-center;
+  margin-top: -20px;
 }
 
 .mapboxgl-ctrl {
@@ -18,8 +13,18 @@
   border: 1px solid #03989E;
   box-shadow: none;
   margin-left:5px;
+  z-index: 2;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 15px !important;
 }
 
 .mapboxgl-ctrl-top-right{
   width: 100%;
+}
+
+
+.mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-top-left, .mapboxgl-ctrl-top-right {
+  z-index: 0 !important;
 }

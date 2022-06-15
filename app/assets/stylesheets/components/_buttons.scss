@@ -38,6 +38,7 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  border: white solid 1px;
 }
 
 .plus {
@@ -52,4 +53,17 @@
     width: 40px;
     height: 40px;
   }
+}
+
+.create-feedback-btn {
+  width: 100% !important;
+  border-radius: 50px !important;
+  color: white !important;
+  background-color: #03989E !important;
+  padding: 8px 30px !important;
+  border: 1px solid #03989E !important;
+}
+
+.space-like {
+  margin-left: 6px;
 }

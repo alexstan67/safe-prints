@@ -44,7 +44,7 @@
       <h1>Comment</h1>
       <%  unless @report.feedbacks.empty? %>
       <div class="comment">
-        <%= @report.feedbacks.first.comment %>;
+        <%= @report.feedbacks.first.comment %>
       </div>
       <% end %>
       <%= link_to "View all comments...", report_feedbacks_path(@report), { :class=>'view-link' }  %>
@@ -52,13 +52,14 @@
 
     <hr id="hr">
 
-    <div class="comment-input">
-      <form action="" method="post" id="comment-form">
-        <input class="comment-section" type="text" placeholder="Write a comment" />
+    <div class="commment-input">
+      <%= simple_form_for [@report,@feedback], html: { id: "comment-form" } do |f|  %>
+        <input class="comment-section" placeholder="Write a comment" type="text" name="feedback[comment]" id="feedback_comment">
         <%= button_tag( :class => "send-btn") do %>
           <i class="fas fa-arrow-circle-up"></i>
         <% end %>
-      </form>
+      <% end %>
     </div>
+
   </div>
 </div>

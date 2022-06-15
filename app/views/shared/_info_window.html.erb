@@ -1,9 +1,8 @@
 <div>
   <% if report_user.photo.attached? %>
-  <%= cl_image_tag report_user.photo.key, height: 80, width: 80, crop: :fill %>
+  <%= cl_image_tag report_user.photo.key, class: "avatar-bordered" %>
   <% end %>
   <h2><%= report.category.capitalize %></h2>
-  <p><%= risk_text %></p>
-  <p><%= report.report_date_time.strftime("%d %b %Y at %Hh%M") %></p>
-  <%= link_to 'Details', report_path(report.id), class: "btn btn-secondary" %> 
+   <p>Reported <%= pluralize(reported_time, measurement) %> ago.</p>
+  <%= link_to 'Details', report_path(report.id), class: "btn btn-secondary" %>
 </div>

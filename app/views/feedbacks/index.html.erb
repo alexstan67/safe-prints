@@ -1,5 +1,9 @@
 <div class="report-container">
 
+  <%= link_to report_path(@report) do %>
+                <i class="fas fa-angle-left fa-3x" style="color:#03989E !important;"></i>
+              <% end %>
+
   <div class="incident-body">
       <h2>Incident description</h2>
       <p> <%= @report.description %> </p>
@@ -11,17 +15,15 @@
   <div class="feedback-and-like">
     <div class="feedback-card-body">
         <div class="feedback-avatar">
-
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
+          <%= cl_image_tag feedback.user.photo.key, class: "avatar-bordered" %>
           <h2> <%= feedback.user.first_name %> </h2>
           <p> <%= feedback.comment %> </p>
-          </div>
-            <div class="like-button">
-              <%= feedback.votes %>
-              <%= link_to feedback_path(feedback), method: :patch do %>
-                <i class="far fa-thumbs-up"></i>
-              <% end %>
-            </div>
+        </div>
+        <div class="like-button">
+          <%= feedback.votes %>
+          <%= link_to feedback_path(feedback), method: :patch do %>
+            <i class="far fa-thumbs-up fa-x space-like" style="color:#03989E !important;"></i>
+          <% end %>
         </div>
     </div>
   </div>
@@ -29,18 +31,32 @@
 
     <hr id="hr">
 
-    <div class="commment-input">
-          <form action="" method="post" id="comment-form">
-            <input class="comment-section" type="text" placeholder="Write a comment" />
-            <%= button_tag( :class => "send-btn") do %>
-              <i class="fas fa-arrow-circle-up"></i>
-            <% end %>
-        </form>
-        </div>
+
+      <div class="commment-input">
+      <%= simple_form_for [@report,@feedback], html: { id: "comment-form" } do |f|  %>
+        <input class="comment-section" placeholder="Write a comment" type="text" name="feedback[comment]" id="feedback_comment">
+        <%= button_tag( :class => "send-btn") do %>
+          <i class="fas fa-arrow-circle-up"></i>
+        <% end %>
+      <% end %>
+    </div>
+
 </div>
 
+<%# <%= f.input :project_title, label: 'Project Title', :label_html => { :class => 'question-project' }, placeholder: 'A catchy, relevant title for your project', :input_html => {:style=> 'width: 650px', class: 'response-project'} %>
+<%# -1
+
+input_html: { style: "font-family: FontAwesome,arial" } %>
 
     <%# t.bigint "user_id", null: false
     t.bigint "report_id", null: false
     t.text "comment"
     t.integer "votes" %>
+
+          <%# <form action="" id="comment-form">
+            <input class="comment-section" type="text" placeholder="Write a comment" />
+            <% form_authenticity_token %>
+            <%#= button_tag( :class => "send-btn") do %>
+              <%# <i class="fas fa-arrow-circle-up"></i> %>
+            <%# end %>
+        <%# </form> %>
