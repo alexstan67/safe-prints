@@ -20,11 +20,13 @@ User.destroy_all
 ######################################################
 ### GLOBAL VARIABLES
 ######################################################
-NBR_USERS = 20
+NBR_USERS = 7
 NBR_WORLD_REPORTS = 100
 MAX_REVIEWS = 5
 
 LOCAL_ADDRESS = ["Canggu, Bali", "Ubud, Bali", "Denpasar, Bali", "Kuta, Bali", "31 Av. de la Bourdonnais, 75007 Paris, France", "20 Rue Jean Rey, 75015 Paris, France", "Pont de Bir-Hakeim, 75015 Paris, France", "12 Av. Rapp, 75007 Paris, France"].freeze
+
+GENERIC_FEEDBACK = ["I totally feel the pain. I had the same experience when I was in Mexico last year.", "One of the reasons, there is so much crime is - the lack of Police, too much austerity. The chances of getting caught is virtually zero !", "It really makes me mad to read all of this", "This is disgusting behaviour!", "This person deserves to be in hell.", "That's just gross. What on earth gives someone the right to do that. Just how disgusting can that person be. It's absolutely unacceptable and it should never happen."]
 
 ######################################################
 ### USERS
@@ -83,7 +85,7 @@ NBR_USERS.times do
   user.email = "#{user.first_name}.#{user.last_name}@gmail.com"
   user.password = "12345678"
   user.country = Faker::Nation.flag
-  file = File.open(Rails.root.join("app/assets/images/girl_#{rand(1..7)}.jpg"))
+  file = File.open(Rails.root.join("app/assets/images/girl_#{i + 1}.jpg"))
   #file = File.open(Rails.root.join(Faker::Avatar.image(slug: "my-own-slug", size: "50x50")))
   # file = File.open(Rails.root.join(image_tag user_image.sample ))
   # file = URI.open(user_image.sample)
@@ -99,6 +101,7 @@ end
 
 # Create our local reports in a defined area (Paris and Canggu), will be linked to team users for demo purpose
 reports = []
+exclusion_reports = []
 i = 0
 LOCAL_ADDRESS.each do |address|
   recent_report = rand(2)
@@ -112,9 +115,13 @@ LOCAL_ADDRESS.each do |address|
   if address.include?('Canggu')
     report.description = "I was watching the sunset at Batu Bolong Beach when a balding man carrying a can of beer approached me. The man was very bubbly and had an English accent. Although he seemed quite lovely at first, things quickly got out of hand. I finally managed to push him away and ran from him. Glad I was able to bend his fingers, so if you spot a balding British man with a beard and a broken finger, please be aware."
     report.category = "sexual harrasment"
+    file = File.open(Rails.root.join("app/assets/images/canggu_report.jpg"))
+    report.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   elsif address.include?('Kuta')
     report.description = "I was walking along Kuta Street with my purse in hand. Unexpectedly, a bald Caucasian man on a scooter snatched my purse. I was shocked and really disappointed to lose my passport, credit cards, and a few thousand dollars."
     report.category = "robbery"
+    file = File.open(Rails.root.join("app/assets/images/kuta_report.jpg"))
+    report.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   else
     report.description = "This place is dangerous, run away!"
   end
@@ -179,7 +186,7 @@ reports.each do |report|
     puts "Create review #{i}..."
     feedback = Feedback.new
     feedback.user_id = random_users.sample
-    feedback.comment = Faker::Lorem.sentence
+    feedback.comment = GENERIC_FEEDBACK.sample
     feedback.votes = [0, 1].sample
     feedback.report_id = report.id
     feedback.save
