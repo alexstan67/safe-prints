@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="incident-comment">
-      <h1>Comment</h1>
+      <h1>Comments</h1>
       <%  unless @report.feedbacks.empty? %>
       <div class="comment">
         <%= @report.feedbacks.first.comment %>
@@ -52,7 +52,7 @@
 
     <hr id="hr">
 
-    <div class="commment-input">
+    <div class="comment-input">
       <%= simple_form_for [@report,@feedback], html: { id: "comment-form" } do |f|  %>
         <input class="comment-section" placeholder="Write a comment" type="text" name="feedback[comment]" id="feedback_comment">
         <%= button_tag( :class => "send-btn") do %>
@@ -60,6 +60,5 @@
         <% end %>
       <% end %>
     </div>
-
   </div>
 </div>
