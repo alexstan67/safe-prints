@@ -10,6 +10,7 @@ class FeedbacksController < ApplicationController
     @feedback.user_id = current_user
     @feedback.report_id = params[:report_id]
     @feedback.user = current_user
+    @feedback.votes = 0
     if @feedback.save!
       redirect_to report_feedbacks_path(@feedback.report)
     end
