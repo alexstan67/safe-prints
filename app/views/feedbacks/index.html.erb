@@ -20,7 +20,7 @@
           <p> <%= feedback.comment %> </p>
         </div>
         <div class="like-button">
-          <% if feedback.votes.zero? %>
+          <% if feedback.votes.nil? || feedback.votes.zero? %>
             <%= link_to feedback_path(feedback), method: :patch do %>
               <i class="far fa-thumbs-up fa-x space-like" style="color:#03989E !important;"></i>
             <% end %>
