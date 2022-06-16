@@ -47,7 +47,7 @@
         <%= @report.feedbacks.first.comment %>
       </div>
       <% end %>
-      <%= link_to "View all comments...", report_feedbacks_path(@report), { :class=>'view-link' }  %>
+      <%= link_to "View all #{@counter} comment".pluralize, report_feedbacks_path(@report), { :class=>'view-link' }  %>
     </div>
 
     <hr id="hr">
