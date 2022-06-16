@@ -38,7 +38,7 @@ puts "Create team user Riza..."
 user = User.new
 user.first_name = "Riza"
 user.last_name = "Santoso"
-user.email = "rizza.santoso@gmail.com"
+user.email = "riza.santoso@gmail.com"
 user.password = "12345678"
 user.country = "🇮🇩"
 file = File.open(Rails.root.join("app/assets/images/riza.png"))
@@ -73,9 +73,6 @@ real_users << user.id
 
 # Create random users
 random_users = []
-# user_image = ["https://kitt.lewagon.com/placeholder/users/arthur-littm", "https://kitt.lewagon.com/placeholder/users/sarahlafer", "https://kitt.lewagon.com/placeholder/users/krokrob"].freeze
-# user_image = ["https://kitt.lewagon.com/placeholder/users/sarahlafer"].freeze
-# user_image = [image_tag("girl_1.jpg"), image_tag("girl_2.jpg"), image_tag("girl_3.jpg"), image_tag("girl_4.jpg"), image_tag("girl_5.jpg"), image_tag("girl_6.jpg"), image_tag("girl_7.jpg"), image_tag("girl_8.jpg")].sample
 i = 0
 NBR_USERS.times do
   puts "Create random user #{i + 1}/#{NBR_USERS}..."
@@ -113,14 +110,15 @@ LOCAL_ADDRESS.each do |address|
   report.risk_level = rand(3)
   # Below the 2 reports tht will be pitched (Canggu and Kuta)
   if address.include?('Canggu')
-    report.description = "I was watching the sunset at Batu Bolong Beach when a balding man carrying a can of beer approached me. The man was very bubbly and had an English accent. Although he seemed quite lovely at first, things quickly got out of hand. I finally managed to push him away and ran from him. Glad I was able to bend his fingers, so if you spot a balding British man with a beard and a broken finger, please be aware."
-    report.category = "sexual harrasment"
-    file = File.open(Rails.root.join("app/assets/images/canggu_report.jpg"))
+    report.description = "The curb-less road weaving through rice paddies connecting Berawa and Batu Bolong is a painfully narrow path indeed, definitely not meant for heavy traffic, no less traffic flowing two-ways. 
+And when there are cars coming from opposite directions, it’s a game of chicken and you know someone is probably going to end up going over the side of the road into some poor farmer’s sawah (rice paddy). That what happended again!"
+    report.category = "road accident"
+    file = File.open(Rails.root.join("app/assets/images/shortcut-Canggu.jpeg"))
     report.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   elsif address.include?('Kuta')
     report.description = "I was walking along Kuta Street with my purse in hand. Unexpectedly, a bald Caucasian man on a scooter snatched my purse. I was shocked and really disappointed to lose my passport, credit cards, and a few thousand dollars."
     report.category = "robbery"
-    file = File.open(Rails.root.join("app/assets/images/kuta_report.jpg"))
+    file = File.open(Rails.root.join("app/assets/images/kuta_night.jpeg"))
     report.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   else
     report.description = "This place is dangerous, run away!"
