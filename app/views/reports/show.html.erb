@@ -34,7 +34,7 @@
         <% if @report.photos.empty? %>
           <%= image_tag "no-photo.png", class: 'no-photo' %>
         <% else %>
-          <% @report.photos.each do |photo| %>
+          <% @report.photos.first(1).each do |photo| %>
             <%= cl_image_tag photo.key, class: 'inc-image' %>
           <% end %>
         <% end%>
