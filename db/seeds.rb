@@ -20,13 +20,13 @@ User.destroy_all
 ######################################################
 ### GLOBAL VARIABLES
 ######################################################
-NBR_USERS = 7
-NBR_WORLD_REPORTS = 100
+NBR_USERS = 7             # 7 MAX !!!
+NBR_WORLD_REPORTS = 100    # 100
 MAX_REVIEWS = 5
 
 LOCAL_ADDRESS = ["Canggu, Bali", "Ubud, Bali", "Denpasar, Bali", "Kuta, Bali", "31 Av. de la Bourdonnais, 75007 Paris, France", "20 Rue Jean Rey, 75015 Paris, France", "Pont de Bir-Hakeim, 75015 Paris, France", "12 Av. Rapp, 75007 Paris, France"].freeze
 
-GENERIC_FEEDBACK = ["I totally feel the pain. I had the same experience when I was in Mexico last year.", "One of the reasons, there is so much crime is - the lack of Police, too much austerity. The chances of getting caught is virtually zero !", "It really makes me mad to read all of this", "This is disgusting behaviour!", "This person deserves to be in hell.", "That's just gross. What on earth gives someone the right to do that. Just how disgusting can that person be. It's absolutely unacceptable and it should never happen."]
+GENERIC_FEEDBACK = ["Thank you so much for the feedback!", "Thanks!!", "Same happened yesterday!", "Vielen Dank !", "It's not the first time!!", "Merci pour le partage !", "Such things should not heppen here...", "It blows my mind !", "Thanks, we'll be carrefull there!"]
 
 ######################################################
 ### USERS
@@ -98,8 +98,11 @@ end
 
 # Create our local reports in a defined area (Paris and Canggu), will be linked to team users for demo purpose
 reports = []
-exclusion_reports = []
 i = 0
+# Specific for the canggu report
+is_canggu = false
+canggu_report_id = 0
+# end of specific
 LOCAL_ADDRESS.each do |address|
   recent_report = rand(2)
   i += 1
@@ -110,6 +113,7 @@ LOCAL_ADDRESS.each do |address|
   report.risk_level = rand(3)
   # Below the 2 reports tht will be pitched (Canggu and Kuta)
   if address.include?('Canggu')
+    is_canggu = true
     report.description = "The curb-less road weaving through rice paddies connecting Berawa and Batu Bolong is a painfully narrow path indeed, definitely not meant for heavy traffic, no less traffic flowing two-ways. 
 And when there are cars coming from opposite directions, it’s a game of chicken and you know someone is probably going to end up going over the side of the road into some poor farmer’s sawah (rice paddy). That what happended again!"
     report.category = "road accident"
@@ -120,8 +124,10 @@ And when there are cars coming from opposite directions, it’s a game of chicke
     report.category = "robbery"
     file = File.open(Rails.root.join("app/assets/images/kuta_night.jpeg"))
     report.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    is_canggu = false
   else
     report.description = "This place is dangerous, run away!"
+    is_canggu = false
   end
   if recent_report == 0
     # Report < 4 hours
@@ -134,6 +140,10 @@ And when there are cars coming from opposite directions, it’s a game of chicke
   end
   report.address = address
   report.save!
+  if is_canggu
+    canggu_report_id = report.id
+    puts "Canggu report id: #{canggu_report_id}"
+  end
   reports << report
 end
 
@@ -179,7 +189,7 @@ end
 # Create reviews for the real users reports
 i = 0
 reports.each do |report|
-  rand(0..MAX_REVIEWS).times do
+  rand(1..MAX_REVIEWS).times do
     i += 1
     puts "Create review #{i}..."
     feedback = Feedback.new
@@ -188,6 +198,20 @@ reports.each do |report|
     feedback.votes = [0, 1].sample
     feedback.report_id = report.id
     feedback.save
+  end
+  # Specific for Canggu
+  if report.id == canggu_report_id
+    j = 0
+    35.times do
+      j += 1
+      puts "Create canggu review #{j}..."
+      feedback = Feedback.new
+      feedback.user_id = random_users.sample
+      feedback.comment = GENERIC_FEEDBACK.sample
+      feedback.votes = [0, 1].sample
+      feedback.report_id = report.id
+      feedback.save
+    end
   end
 end
 
