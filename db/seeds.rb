@@ -110,7 +110,6 @@ LOCAL_ADDRESS.each do |address|
   report = Report.new
   report.user_id = random_users[i % NBR_USERS]
   report.category = Report::CATEGORIES.sample
-  report.risk_level = rand(3)
   # Below the 2 reports tht will be pitched (Canggu and Kuta)
   if address.include?('Canggu')
     is_canggu = true
@@ -164,7 +163,6 @@ NBR_WORLD_REPORTS.times do
   report = Report.new
   report.user_id = random_users[i % NBR_USERS]
   report.category = Report::CATEGORIES.sample
-  report.risk_level = rand(3)
   report.description = "This place is dangerous, run away!"
   if recent_report == 0
     # Report < 4 hours
