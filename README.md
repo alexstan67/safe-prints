@@ -24,9 +24,10 @@ Reviews about reports can also be provided by the community, either by leaving a
 On the map, new reports are distinguished from older reports through the opacity of the pins.
 
 ## Requirements
-* ruby 3.0.3
+* ruby 3.0.6
 * rails 6.1.6
 * bundler
+* node 16.20.0
 
 ## Installation
 Create a .env file with following keys:
